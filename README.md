@@ -1,2 +1,3 @@
-# rhsm-dbus-examples
-Example of bash scripts using RHSM D-Bus API
+# Examples of RHSM D-Bus API
+
+This project contains bash scripts used for testing RHSM D-Bus API

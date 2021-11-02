@@ -6,7 +6,7 @@ source ./library.sh
 # activation key
 
 export org_id="admin"
-export activation_key="admin-awesomeos-all-x86-cont-key-ff808081790d1ea601790d1f089001a3"
+export activation_key="admin-awesomeos-all-x86-cont-key-ff8080817cdb07ac017cdb07ecfa0345"
 
 start_register_server
 
@@ -19,7 +19,7 @@ dbus-send --address=${my_addr} --print-reply --dest='com.redhat.RHSM1.Register' 
        array:string:"${activation_key}" \
        dict:string:string:"","" \
        dict:string:string:"","" \
-       string:"" > /root/register_output.txt
+       string:"" | gawk '/string/{ $1 = ""; print $0; }' | sed 's/\"//' | sed 's/\(.*\)\"/\1/' > /root/register_output.json
 
 print_registration_result $?
 

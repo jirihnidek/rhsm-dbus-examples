@@ -19,7 +19,7 @@ dbus-send --address=${my_addr} --print-reply --dest='com.redhat.RHSM1.Register' 
         string:"${password}" \
         dict:string:string:"","" \
         dict:string:string:"","" \
-        string:"" > /root/register_output.txt
+        string:"" | gawk '/string/{ $1 = ""; print $0; }' | sed 's/\"//' | sed 's/\(.*\)\"/\1/' > /root/register_output.json
 
 print_registration_result $?
 

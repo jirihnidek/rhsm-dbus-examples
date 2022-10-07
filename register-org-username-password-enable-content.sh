@@ -24,4 +24,6 @@ print_registration_result $?
 
 stop_register_server
 
+dbus-send --system --print-reply --dest=com.redhat.RHSM1 /com/redhat/RHSM1/Entitlement com.redhat.RHSM1.Entitlement.GetPools dict:string:string:"pool_subsets","consumed" dict:string:string:"","" string:""
+
 unregister
